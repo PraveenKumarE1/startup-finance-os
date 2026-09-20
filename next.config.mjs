@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
+  basePath: '/startup-finance-os',
   trailingSlash: true,
   images: {
     unoptimized: true,
