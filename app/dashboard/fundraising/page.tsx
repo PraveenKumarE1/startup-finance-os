@@ -1,6 +1,7 @@
 'use client';
 
 import * as React from 'react';
+import Link from 'next/link';
 import { useAppStore } from '@/lib/store';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -414,7 +415,9 @@ export default function FundraisingPage() {
                                   <User className="h-4 w-4 text-primary" />
                                 </div>
                                 <div>
-                                  <p className="font-medium">{investor.name}</p>
+                                  <Link href={`/dashboard/fundraising/investor?id=${investor.id}`} className="font-medium transition-colors hover:text-gold-dark dark:hover:text-gold-light">
+                                    {investor.name}
+                                  </Link>
                                   <p className="text-xs text-muted-foreground">{investor.email}</p>
                                 </div>
                               </div>
@@ -465,10 +468,10 @@ export default function FundraisingPage() {
                     </div>
                     <div className="space-y-2 min-h-[300px]">
                       {filteredInvestors.filter((inv) => inv.status === stage.value).map((investor) => (
-                        <div
+                        <Link
                           key={investor.id}
-                          className="bg-card border rounded-lg p-3 hover:shadow-md transition-shadow cursor-pointer"
-                          onClick={() => handleEdit(investor)}
+                          href={`/dashboard/fundraising/investor?id=${investor.id}`}
+                          className="block bg-card border rounded-lg p-3 hover:shadow-md hover:border-gold-light/50 transition-shadow cursor-pointer"
                         >
                           <p className="font-medium">{investor.name}</p>
                           <p className="text-xs text-muted-foreground">{investor.firm || 'No firm'}</p>
@@ -483,7 +486,7 @@ export default function FundraisingPage() {
                               </span>
                             )}
                           </div>
-                        </div>
+                        </Link>
                       ))}
                       {filteredInvestors.filter((inv) => inv.status === stage.value).length === 0 && (
                         <div className="text-center text-muted-foreground text-sm py-8">Drop investors here</div>

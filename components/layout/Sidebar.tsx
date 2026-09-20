@@ -33,6 +33,7 @@ const navigation = [
 ];
 
 const quickActions = [
+  { name: 'Setup wizard', href: '/dashboard/onboarding' },
   { name: '+ Add Investor', href: '/dashboard/fundraising' },
   { name: '+ New Scenario', href: '/dashboard/financial-model' },
   { name: '+ New Update', href: '/dashboard/investor-updates' },

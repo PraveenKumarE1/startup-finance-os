@@ -36,13 +36,14 @@ const pageTitles: Record<string, string> = {
   '/dashboard/investor-updates': 'Investor Updates',
   '/dashboard/team': 'Team',
   '/dashboard/settings': 'Settings',
+  '/dashboard/onboarding': 'Setup',
 };
 
 export function Header() {
   const pathname = usePathname();
   const { currentStartup, toggleSidebar, sidebarOpen } = useAppStore();
   const { resolvedTheme, setTheme } = useTheme();
-  const title = pageTitles[pathname] ?? 'StartupFinance OS';
+  const title = pageTitles[pathname] ?? (pathname.startsWith('/dashboard/fundraising/') ? 'Investor Profile' : 'StartupFinance OS');
 
   return (
     <header
