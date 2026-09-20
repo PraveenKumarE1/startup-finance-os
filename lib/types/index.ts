@@ -8,6 +8,8 @@ export interface Startup {
   stage: 'idea' | 'pre-seed' | 'seed' | 'series-a' | 'series-b' | 'growth';
   founded_date: string;
   website?: string;
+  founder_name?: string;
+  email?: string;
   user_id: string;
   created_at: string;
   updated_at: string;

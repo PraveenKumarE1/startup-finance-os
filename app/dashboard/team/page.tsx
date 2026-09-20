@@ -169,12 +169,12 @@ export default function TeamPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Team Management</h1>
+          <h1 className="font-display text-2xl font-bold tracking-tight sm:text-3xl">Team Management</h1>
           <p className="text-muted-foreground">Manage your team, roles, and workspace access</p>
         </div>
         <Dialog open={isInviteOpen} onOpenChange={setIsInviteOpen}>
           <DialogTrigger asChild>
-            <Button><Plus className="h-4 w-4 mr-2" />Invite Member</Button>
+            <Button variant="gold"><Plus className="h-4 w-4 mr-2" />Invite Member</Button>
           </DialogTrigger>
           <DialogContent className="max-w-md">
             <DialogHeader>
@@ -211,7 +211,7 @@ export default function TeamPage() {
               </div>
               <DialogFooter>
                 <Button type="button" variant="outline" onClick={() => setIsInviteOpen(false)}>Cancel</Button>
-                <Button type="submit"><Mail className="h-4 w-4 mr-2" />Send Invite</Button>
+                <Button type="submit" variant="gold"><Mail className="h-4 w-4 mr-2" />Send Invite</Button>
               </DialogFooter>
             </form>
           </DialogContent>
@@ -253,7 +253,7 @@ export default function TeamPage() {
               </div>
               <div>
                 <p className="text-sm text-muted-foreground">Founder Equity</p>
-                <p className="text-2xl font-bold">{totalFounderEquity}%</p>
+                <p className="text-2xl font-bold tabular-nums">{totalFounderEquity}%</p>
               </div>
             </div>
           </CardContent>
@@ -324,7 +324,7 @@ export default function TeamPage() {
                         {role.label}
                       </Badge>
                     </TableCell>
-                    <TableCell className="text-right font-semibold">
+                    <TableCell className="text-right font-semibold tabular-nums">
                       {member.equity > 0 ? `${member.equity}%` : '—'}
                     </TableCell>
                     <TableCell>

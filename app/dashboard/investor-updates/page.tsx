@@ -247,10 +247,10 @@ export default function InvestorUpdatesPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Investor Updates</h1>
+          <h1 className="font-display text-2xl font-bold tracking-tight sm:text-3xl">Investor Updates</h1>
           <p className="text-muted-foreground">Keep investors aligned with professional monthly reports</p>
         </div>
-        <Button onClick={openTemplate}><Plus className="h-4 w-4 mr-2" />New Update</Button>
+        <Button variant="gold" onClick={openTemplate}><Plus className="h-4 w-4 mr-2" />New Update</Button>
       </div>
 
       {updates.length > 0 && (
@@ -263,7 +263,7 @@ export default function InvestorUpdatesPage() {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Updates Sent</p>
-                  <p className="text-2xl font-bold">{updates.filter((u) => u.status === 'sent').length}</p>
+                  <p className="text-2xl font-bold tabular-nums">{updates.filter((u) => u.status === 'sent').length}</p>
                 </div>
               </div>
             </CardContent>
@@ -276,7 +276,7 @@ export default function InvestorUpdatesPage() {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Drafts</p>
-                  <p className="text-2xl font-bold">{updates.filter((u) => u.status === 'draft').length}</p>
+                  <p className="text-2xl font-bold tabular-nums">{updates.filter((u) => u.status === 'draft').length}</p>
                 </div>
               </div>
             </CardContent>
@@ -289,7 +289,7 @@ export default function InvestorUpdatesPage() {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Active Investors</p>
-                  <p className="text-2xl font-bold">{investors.filter((i) => i.status !== 'passed' && i.status !== 'prospect').length}</p>
+                  <p className="text-2xl font-bold tabular-nums">{investors.filter((i) => i.status !== 'passed' && i.status !== 'prospect').length}</p>
                 </div>
               </div>
             </CardContent>
@@ -306,7 +306,7 @@ export default function InvestorUpdatesPage() {
         <TabsContent value="sent" className="mt-4">
           <Card>
             <CardHeader>
-              <CardTitle>Updates ({updates.length})</CardTitle>
+              <CardTitle className="tabular-nums">Updates ({updates.length})</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="overflow-x-auto">
@@ -363,8 +363,8 @@ export default function InvestorUpdatesPage() {
                             </TableCell>
                             <TableCell>
                               <div className="space-y-0.5">
-                                <p className="text-sm">MRR: <span className="font-semibold">{formatCurrency(update.metrics.mrr)}</span></p>
-                                <p className="text-xs text-muted-foreground">
+                                <p className="text-sm">MRR: <span className="font-semibold tabular-nums">{formatCurrency(update.metrics.mrr)}</span></p>
+                                <p className="text-xs text-muted-foreground tabular-nums">
                                   {update.metrics.customers} customers • {update.metrics.growth}% growth
                                 </p>
                               </div>
@@ -534,7 +534,7 @@ export default function InvestorUpdatesPage() {
             </div>
             <DialogFooter>
               <Button type="button" variant="outline" onClick={() => setIsDialogOpen(false)}>Save Draft</Button>
-              <Button type="submit">Create Draft</Button>
+              <Button type="submit" variant="gold">Create Draft</Button>
             </DialogFooter>
           </form>
         </DialogContent>
@@ -606,19 +606,19 @@ export default function InvestorUpdatesPage() {
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4 bg-muted/50 rounded-lg">
                 <div>
                   <p className="text-xs text-muted-foreground">MRR</p>
-                  <p className="font-semibold text-lg">{formatCurrency(viewingUpdate.metrics.mrr)}</p>
+                  <p className="font-semibold text-lg tabular-nums">{formatCurrency(viewingUpdate.metrics.mrr)}</p>
                 </div>
                 <div>
                   <p className="text-xs text-muted-foreground">Customers</p>
-                  <p className="font-semibold text-lg">{viewingUpdate.metrics.customers}</p>
+                  <p className="font-semibold text-lg tabular-nums">{viewingUpdate.metrics.customers}</p>
                 </div>
                 <div>
                   <p className="text-xs text-muted-foreground">Growth</p>
-                  <p className="font-semibold text-lg">{viewingUpdate.metrics.growth}%</p>
+                  <p className="font-semibold text-lg tabular-nums">{viewingUpdate.metrics.growth}%</p>
                 </div>
                 <div>
                   <p className="text-xs text-muted-foreground">Runway</p>
-                  <p className="font-semibold text-lg">{viewingUpdate.metrics.runway_months} mo</p>
+                  <p className="font-semibold text-lg tabular-nums">{viewingUpdate.metrics.runway_months} mo</p>
                 </div>
               </div>
 
@@ -634,7 +634,7 @@ export default function InvestorUpdatesPage() {
               <DialogFooter className="border-t pt-4">
                 <Button variant="outline" onClick={() => setViewingUpdate(null)}>Close</Button>
                 {viewingUpdate.status === 'draft' && (
-                  <Button className="text-white" onClick={markAsSent}>
+                  <Button variant="gold" onClick={markAsSent}>
                     <Send className="h-4 w-4 mr-2" /> Mark as Sent
                   </Button>
                 )}

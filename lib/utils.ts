@@ -7,14 +7,14 @@ export function cn(...inputs: ClassValue[]) {
 
 export const badgeVariants = (props: { variant?: string }) => {
   const { variant = 'default' } = props;
-  const base = 'inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2';
+  const base = 'inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5 text-[11px] font-semibold tracking-wide transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2';
   const variants = {
-    default: 'border-transparent bg-primary text-primary-foreground hover:bg-primary/80',
+    default: 'border-transparent bg-primary/10 text-primary dark:bg-primary/15 dark:text-primary hover:bg-primary/15',
     secondary: 'border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80',
-    destructive: 'border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80',
-    outline: 'text-foreground',
-    success: 'border-transparent bg-green-500 text-white hover:bg-green-600',
-    warning: 'border-transparent bg-yellow-500 text-white hover:bg-yellow-600',
+    destructive: 'border-transparent bg-destructive/10 text-destructive hover:bg-destructive/15',
+    outline: 'border-border/70 text-muted-foreground',
+    success: 'border-transparent bg-emerald-500/10 text-emerald-700 hover:bg-emerald-500/15 dark:text-emerald-400',
+    warning: 'border-transparent bg-amber-500/10 text-amber-700 hover:bg-amber-500/15 dark:text-amber-400',
   };
   return `${base} ${variants[variant as keyof typeof variants] || variants.default}`;
 };

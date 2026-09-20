@@ -62,7 +62,7 @@ export default function SettingsPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Workspace Settings</h1>
+          <h1 className="font-display text-2xl font-bold tracking-tight sm:text-3xl">Workspace Settings</h1>
           <p className="text-muted-foreground">Configure your company profile and workspace preferences</p>
         </div>
         {savedToast && (
@@ -149,7 +149,7 @@ export default function SettingsPage() {
                     </div>
                   </div>
                   <div className="flex justify-end">
-                    <Button onClick={saveCompany}><Save className="h-4 w-4 mr-2" />Save Changes</Button>
+                    <Button variant="gold" onClick={saveCompany}><Save className="h-4 w-4 mr-2" />Save Changes</Button>
                   </div>
                 </CardContent>
               </Card>
@@ -174,7 +174,7 @@ export default function SettingsPage() {
                         </p>
                       </div>
                       <div className="text-right">
-                        <p className="text-3xl font-bold">$49<span className="text-sm font-normal text-muted-foreground">/mo</span></p>
+                        <p className="text-3xl font-bold tabular-nums">$49<span className="text-sm font-normal text-muted-foreground">/mo</span></p>
                         <p className="text-sm text-muted-foreground">Billed annually</p>
                       </div>
                     </div>

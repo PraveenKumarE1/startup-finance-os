@@ -184,10 +184,10 @@ export default function FinancialModelPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Financial Modeling</h1>
+          <h1 className="font-display text-2xl font-bold tracking-tight sm:text-3xl">Financial Modeling</h1>
           <p className="text-muted-foreground">Build projections, model scenarios, and plan your runway</p>
         </div>
-        <Button onClick={handleNewProjection}><Plus className="h-4 w-4 mr-2" />New Projection</Button>
+        <Button variant="gold" onClick={handleNewProjection}><Plus className="h-4 w-4 mr-2" />New Projection</Button>
       </div>
 
       {currentProj && (
@@ -492,7 +492,6 @@ export default function FinancialModelPage() {
       </div>
 
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-        <DialogTrigger asChild><Button onClick={handleNewProjection} /></DialogTrigger>
         <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>{editingProjection ? 'Edit Projection' : 'Create New Projection'}</DialogTitle>

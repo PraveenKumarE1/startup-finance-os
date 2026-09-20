@@ -48,7 +48,7 @@ const entityTypes = [
 
 const shareClasses = ['common', 'preferred', 'options'];
 
-const COLORS = ['#3B82F6', '#10B981', '#8B5CF6', '#F59E0B', '#6B7280', '#EF4444', '#EC4899', '#06B6D4', '#84CC16', '#F97316'];
+const COLORS = ['hsl(38 92% 50%)', 'hsl(226 80% 60%)', 'hsl(160 80% 45%)', 'hsl(284 72% 55%)'];
 
 export default function CapTablePage() {
   const { capTable, addCapTableEntry, updateCapTableEntry, deleteCapTableEntry, currentStartup } = useAppStore();
@@ -199,10 +199,10 @@ export default function CapTablePage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Cap Table Management</h1>
+          <h1 className="font-display text-2xl font-bold tracking-tight sm:text-3xl">Cap Table Management</h1>
           <p className="text-muted-foreground">Track ownership, model dilution, and manage equity grants</p>
         </div>
-        <Button onClick={handleNewEntry}><Plus className="h-4 w-4 mr-2" />Add Stakeholder</Button>
+        <Button variant="gold" onClick={handleNewEntry}><Plus className="h-4 w-4 mr-2" />Add Stakeholder</Button>
       </div>
 
       <div className="grid gap-4 md:grid-cols-4">
@@ -214,7 +214,7 @@ export default function CapTablePage() {
               </div>
               <div>
                 <p className="text-sm text-muted-foreground">Founders</p>
-                <p className="text-2xl font-bold">{founders.reduce((s, e) => s + e.percentage, 0).toFixed(1)}%</p>
+                <p className="text-2xl font-bold tabular-nums">{founders.reduce((s, e) => s + e.percentage, 0).toFixed(1)}%</p>
               </div>
             </div>
           </CardContent>
@@ -227,7 +227,7 @@ export default function CapTablePage() {
               </div>
               <div>
                 <p className="text-sm text-muted-foreground">Investors</p>
-                <p className="text-2xl font-bold">{investors.reduce((s, e) => s + e.percentage, 0).toFixed(1)}%</p>
+                <p className="text-2xl font-bold tabular-nums">{investors.reduce((s, e) => s + e.percentage, 0).toFixed(1)}%</p>
               </div>
             </div>
           </CardContent>
@@ -240,7 +240,7 @@ export default function CapTablePage() {
               </div>
               <div>
                 <p className="text-sm text-muted-foreground">Employees</p>
-                <p className="text-2xl font-bold">{(employees.reduce((s, e) => s + e.percentage, 0) + pools.reduce((s, e) => s + e.percentage, 0)).toFixed(1)}%</p>
+                <p className="text-2xl font-bold tabular-nums">{(employees.reduce((s, e) => s + e.percentage, 0) + pools.reduce((s, e) => s + e.percentage, 0)).toFixed(1)}%</p>
               </div>
             </div>
           </CardContent>
@@ -253,7 +253,7 @@ export default function CapTablePage() {
               </div>
               <div>
                 <p className="text-sm text-muted-foreground">Total Invested</p>
-                <p className="text-2xl font-bold">{formatCurrency(totalInvested)}</p>
+                <p className="text-2xl font-bold tabular-nums">{formatCurrency(totalInvested)}</p>
               </div>
             </div>
           </CardContent>
@@ -319,12 +319,12 @@ export default function CapTablePage() {
                             <TableCell>
                               <Badge variant="secondary">{entry.share_class}</Badge>
                             </TableCell>
-                            <TableCell className="text-right font-mono">{formatNumber(entry.shares)}</TableCell>
-                            <TableCell className="text-right font-semibold">{entry.percentage.toFixed(2)}%</TableCell>
-                            <TableCell className="text-right">
+                            <TableCell className="text-right font-mono tabular-nums">{formatNumber(entry.shares)}</TableCell>
+                            <TableCell className="text-right font-semibold tabular-nums">{entry.percentage.toFixed(2)}%</TableCell>
+                            <TableCell className="text-right tabular-nums">
                               {entry.invested_amount ? formatCurrency(entry.invested_amount) : '-'}
                             </TableCell>
-                            <TableCell className="text-right">
+                            <TableCell className="text-right tabular-nums">
                               {entry.cost_basis ? formatCurrency(entry.cost_basis, 'USD', 4) : '-'}
                             </TableCell>
                             <TableCell>
@@ -353,8 +353,8 @@ export default function CapTablePage() {
                 </Table>
               </div>
               <div className="mt-4 pt-4 border-t flex items-center justify-between">
-                <span className="font-semibold">Total Shares: {formatNumber(totalShares)}</span>
-                <span className="font-semibold text-primary">100.00%</span>
+                <span className="font-semibold tabular-nums">Total Shares: {formatNumber(totalShares)}</span>
+                <span className="font-semibold text-primary tabular-nums">100.00%</span>
               </div>
             </CardContent>
           </Card>
@@ -396,11 +396,11 @@ export default function CapTablePage() {
                     <RechartsPieChart>
                       <Pie
                         data={[
-                          { name: 'Founders', value: founders.reduce((s, e) => s + e.percentage, 0), color: '#3B82F6' },
-                          { name: 'Investors', value: investors.reduce((s, e) => s + e.percentage, 0), color: '#F59E0B' },
-                          { name: 'Employees', value: employees.reduce((s, e) => s + e.percentage, 0), color: '#10B981' },
-                          { name: 'Advisors', value: advisors.reduce((s, e) => s + e.percentage, 0), color: '#8B5CF6' },
-                          { name: 'Option Pool', value: pools.reduce((s, e) => s + e.percentage, 0), color: '#6B7280' },
+                          { name: 'Founders', value: founders.reduce((s, e) => s + e.percentage, 0), color: 'hsl(38 92% 50%)' },
+                          { name: 'Investors', value: investors.reduce((s, e) => s + e.percentage, 0), color: 'hsl(226 80% 60%)' },
+                          { name: 'Employees', value: employees.reduce((s, e) => s + e.percentage, 0), color: 'hsl(160 80% 45%)' },
+                          { name: 'Advisors', value: advisors.reduce((s, e) => s + e.percentage, 0), color: 'hsl(284 72% 55%)' },
+                          { name: 'Option Pool', value: pools.reduce((s, e) => s + e.percentage, 0), color: 'hsl(38 92% 50%)' },
                         ].filter(d => d.value > 0)}
                         cx="50%"
                         cy="50%"
@@ -411,11 +411,11 @@ export default function CapTablePage() {
                         label={({ name, percent }) => `${name} ${(percent * 100).toFixed(1)}%`}
                       >
                         {[
-                          { name: 'Founders', color: '#3B82F6' },
-                          { name: 'Investors', color: '#F59E0B' },
-                          { name: 'Employees', color: '#10B981' },
-                          { name: 'Advisors', color: '#8B5CF6' },
-                          { name: 'Option Pool', color: '#6B7280' },
+                          { name: 'Founders', color: 'hsl(38 92% 50%)' },
+                          { name: 'Investors', color: 'hsl(226 80% 60%)' },
+                          { name: 'Employees', color: 'hsl(160 80% 45%)' },
+                          { name: 'Advisors', color: 'hsl(284 72% 55%)' },
+                          { name: 'Option Pool', color: 'hsl(38 92% 50%)' },
                         ].map((c, i) => <Cell key={`cell-${i}`} fill={c.color} />)}
                       </Pie>
                       <Tooltip formatter={(value: number) => [value.toFixed(2) + '%', '']} />
@@ -450,7 +450,7 @@ export default function CapTablePage() {
                           </div>
                           <div>
                             <p className="font-medium">{entry.name}</p>
-                            <p className="text-sm text-muted-foreground">{formatNumber(entry.shares)} shares • {entry.percentage.toFixed(2)}%</p>
+                            <p className="text-sm text-muted-foreground tabular-nums">{formatNumber(entry.shares)} shares • {entry.percentage.toFixed(2)}%</p>
                           </div>
                         </div>
                         <Badge variant={vesting.status === 'Fully Vested' ? 'success' : vesting.status === 'Cliff' ? 'warning' : 'outline'}>
@@ -460,7 +460,7 @@ export default function CapTablePage() {
                       <div className="h-2 bg-muted rounded-full overflow-hidden">
                         <div className="h-full bg-primary rounded-full transition-all" style={{ width: `${vesting.progress}%` }} />
                       </div>
-                      <div className="flex items-center justify-between mt-2 text-xs text-muted-foreground">
+                      <div className="flex items-center justify-between mt-2 text-xs text-muted-foreground tabular-nums">
                         <span>Start: {start.toLocaleDateString()}</span>
                         <span>Cliff: {cliffDate.toLocaleDateString()}</span>
                         <span>End: {end.toLocaleDateString()}</span>
@@ -508,7 +508,7 @@ export default function CapTablePage() {
                       <Input type="number" placeholder="10" defaultValue="10" />
                     </div>
                   </div>
-                  <Button className="w-full"><Calculator className="h-4 w-4 mr-2" />Calculate Dilution</Button>
+                  <Button variant="gold" className="w-full"><Calculator className="h-4 w-4 mr-2" />Calculate Dilution</Button>
                 </div>
                 <div className="space-y-4">
                   <h4 className="font-medium">Projected Ownership</h4>
@@ -526,9 +526,9 @@ export default function CapTablePage() {
                         {capTable.map((entry) => (
                           <TableRow key={entry.id}>
                             <TableCell>{entry.name}</TableCell>
-                            <TableCell className="text-right">{entry.percentage.toFixed(2)}%</TableCell>
-                            <TableCell className="text-right text-muted-foreground">{(entry.percentage * 0.8).toFixed(2)}%</TableCell>
-                            <TableCell className="text-right text-red-600">-{(entry.percentage * 0.2).toFixed(2)}%</TableCell>
+                            <TableCell className="text-right tabular-nums">{entry.percentage.toFixed(2)}%</TableCell>
+                            <TableCell className="text-right text-muted-foreground tabular-nums">{(entry.percentage * 0.8).toFixed(2)}%</TableCell>
+                            <TableCell className="text-right text-red-600 tabular-nums">-{(entry.percentage * 0.2).toFixed(2)}%</TableCell>
                           </TableRow>
                         ))}
                       </TableBody>
@@ -621,7 +621,7 @@ export default function CapTablePage() {
             </div>
             <DialogFooter>
               <Button type="button" variant="outline" onClick={() => setIsDialogOpen(false)}>Cancel</Button>
-              <Button type="submit">{editingEntry ? 'Update' : 'Add'}</Button>
+              <Button type="submit" variant="gold">{editingEntry ? 'Update' : 'Add'}</Button>
             </DialogFooter>
           </form>
         </DialogContent>

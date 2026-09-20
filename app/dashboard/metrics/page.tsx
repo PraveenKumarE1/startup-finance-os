@@ -218,10 +218,10 @@ export default function MetricsPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Metrics Dashboard</h1>
-          <p className="text-muted-foreground">Track KPIs, visualize trends, and monitor business health</p>
+          <h1 className="font-display text-2xl font-bold tracking-tight sm:text-3xl">Metrics Dashboard</h1>
+          <p className="mt-1.5 text-muted-foreground">Track KPIs, visualize trends, and monitor business health</p>
         </div>
-        <Button onClick={handleNewMetric}><Plus className="h-4 w-4 mr-2" />Log Metrics</Button>
+        <Button variant="gold" onClick={handleNewMetric}><Plus className="h-4 w-4 mr-2" />Log Metrics</Button>
       </div>
 
       {latestMetrics && (
@@ -238,7 +238,7 @@ export default function MetricsPage() {
                   <Icon className={cn('h-4 w-4', def.color)} />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">{formatValue(def.key, current)}</div>
+                  <div className="text-2xl font-bold tabular-nums">{formatValue(def.key, current)}</div>
                   {previous !== undefined && (
                     <p className="text-xs text-muted-foreground flex items-center gap-1">
                       <span className={cn(
@@ -297,7 +297,7 @@ export default function MetricsPage() {
                       <Tooltip
                         formatter={(value: number, name: string) => [formatCurrency(value), name]}
                         labelFormatter={(label) => formatDate(label)}
-                        contentStyle={{ backgroundColor: '#fff', border: '1px solid #e5e7eb', borderRadius: '8px' }}
+                        contentStyle={{ background: 'hsl(var(--popover))', border: '1px solid hsl(var(--border))', borderRadius: '12px', boxShadow: '0 12px 32px -12px hsl(226 45% 12% / 0.3)', fontSize: 13 }}
                       />
                       <Legend />
                       <Area type="monotone" dataKey="mrr" stroke="#10B981" fillOpacity={1} fill="url(#mrrGrad)" strokeWidth={2} name="MRR" />

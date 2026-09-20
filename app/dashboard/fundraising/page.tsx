@@ -184,12 +184,12 @@ export default function FundraisingPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Fundraising CRM</h1>
+          <h1 className="font-display text-2xl font-bold tracking-tight sm:text-3xl">Fundraising CRM</h1>
           <p className="text-muted-foreground">Manage your investor pipeline and fundraising rounds</p>
         </div>
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogTrigger asChild>
-            <Button onClick={openNewDialog}><Plus className="h-4 w-4 mr-2" />Add Investor</Button>
+            <Button variant="gold" onClick={openNewDialog}><Plus className="h-4 w-4 mr-2" />Add Investor</Button>
           </DialogTrigger>
           <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
             <DialogHeader>
@@ -281,7 +281,7 @@ export default function FundraisingPage() {
               </div>
               <DialogFooter>
                 <Button type="button" variant="outline" onClick={() => setIsDialogOpen(false)}>Cancel</Button>
-                <Button type="submit">{editingInvestor ? 'Update' : 'Add Investor'}</Button>
+                <Button type="submit" variant="gold">{editingInvestor ? 'Update' : 'Add Investor'}</Button>
               </DialogFooter>
             </form>
           </DialogContent>
@@ -290,17 +290,15 @@ export default function FundraisingPage() {
 
       {activeRound && (
         <Card className="border-primary">
-          <CardHeader>
-            <div className="flex items-center justify-between">
-              <div>
-                <CardTitle>{activeRound.name}</CardTitle>
-                <p className="text-muted-foreground">
-                  {formatCurrency(activeRound.raised_amount)} / {formatCurrency(activeRound.target_amount)} raised
-                  ({Math.round((activeRound.raised_amount / activeRound.target_amount) * 100)}%)
-                </p>
-              </div>
-              <Badge variant="success">Active</Badge>
+          <CardHeader className="flex-row items-center justify-between space-y-0">
+            <div>
+              <CardTitle>{activeRound.name}</CardTitle>
+              <p className="text-muted-foreground tabular-nums">
+                {formatCurrency(activeRound.raised_amount)} / {formatCurrency(activeRound.target_amount)} raised
+                ({Math.round((activeRound.raised_amount / activeRound.target_amount) * 100)}%)
+              </p>
             </div>
+            <Badge variant="success">Active</Badge>
           </CardHeader>
           <CardContent>
             <div className="h-4 bg-muted rounded-full overflow-hidden">
@@ -312,11 +310,11 @@ export default function FundraisingPage() {
             <div className="mt-4 grid gap-4 sm:grid-cols-3">
               <div>
                 <p className="text-sm text-muted-foreground">Pre-money Valuation</p>
-                <p className="text-lg font-semibold">{activeRound.valuation_pre ? formatCurrency(activeRound.valuation_pre) : 'Not set'}</p>
+                <p className="text-lg font-semibold tabular-nums">{activeRound.valuation_pre ? formatCurrency(activeRound.valuation_pre) : 'Not set'}</p>
               </div>
               <div>
                 <p className="text-sm text-muted-foreground">Post-money Valuation</p>
-                <p className="text-lg font-semibold">{activeRound.valuation_post ? formatCurrency(activeRound.valuation_post) : 'Not set'}</p>
+                <p className="text-lg font-semibold tabular-nums">{activeRound.valuation_post ? formatCurrency(activeRound.valuation_post) : 'Not set'}</p>
               </div>
               <div>
                 <p className="text-sm text-muted-foreground">Instrument</p>
@@ -330,7 +328,7 @@ export default function FundraisingPage() {
       <Card>
         <CardHeader>
           <div className="flex flex-wrap items-center justify-between gap-4">
-            <CardTitle>Investor Pipeline ({investors.length} total)</CardTitle>
+            <CardTitle className="tabular-nums">Investor Pipeline ({investors.length} total)</CardTitle>
             <div className="flex items-center gap-2">
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
@@ -463,7 +461,7 @@ export default function FundraisingPage() {
                       <Badge variant="outline" className={cn(stage.color)}>
                         {stage.label}
                       </Badge>
-                      <span className="text-xs text-muted-foreground">{statusCounts[stage.value]}</span>
+                      <span className="text-xs text-muted-foreground tabular-nums">{statusCounts[stage.value]}</span>
                     </div>
                     <div className="space-y-2 min-h-[300px]">
                       {filteredInvestors.filter((inv) => inv.status === stage.value).map((investor) => (
@@ -476,7 +474,7 @@ export default function FundraisingPage() {
                           <p className="text-xs text-muted-foreground">{investor.firm || 'No firm'}</p>
                           <div className="flex items-center gap-2 mt-2 text-xs">
                             {investor.check_size_max && (
-                              <span className="text-green-600">${(investor.check_size_max / 1000).toFixed(0)}k max</span>
+                              <span className="text-green-600 tabular-nums">${(investor.check_size_max / 1000).toFixed(0)}k max</span>
                             )}
                             {investor.next_followup && (
                               <span className="text-orange-600 flex items-center gap-1">

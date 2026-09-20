@@ -46,16 +46,18 @@ interface AppState {
 
 const demoStartup: Startup = {
   id: 'demo-startup-1',
-  name: 'OrbitFlow Studio',
-  slug: 'orbitflow-studio',
-  description: 'AI operating system for agencies and service businesses',
-  industry: 'AI Ops / Digital Services',
-  stage: 'growth',
-  founded_date: '2022-09-10',
-  website: 'https://orbitflow.ai',
+  name: 'FinFlow AI',
+  slug: 'finflow-ai',
+  description: 'AI-native accounting and spend intelligence for modern finance teams',
+  industry: 'Fintech / B2B SaaS',
+  stage: 'seed',
+  founded_date: '2024-03-18',
+  website: 'https://finflow.app',
+  founder_name: 'Maya Chen',
+  email: 'maya@finflow.app',
   user_id: 'demo-user',
-  created_at: '2024-01-15T10:00:00Z',
-  updated_at: '2024-01-15T10:00:00Z',
+  created_at: '2024-03-20T10:00:00Z',
+  updated_at: '2024-03-20T10:00:00Z',
 };
 
 const demoInvestors: Investor[] = [
